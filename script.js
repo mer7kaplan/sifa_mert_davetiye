@@ -81,9 +81,12 @@ rsvpForm.addEventListener('submit', async (e) => {
   formMessage.textContent = '';
 
   try {
-    await fetch(RSVP_SCRIPT_URL, {
+    const response = await fetch(RSVP_SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors', // Apps Script CORS başlığı döndürmediği için 'no-cors' kullanılır
+      // Not: mode belirtmiyoruz (varsayılan 'cors'). Content-Type
+      // 'application/x-www-form-urlencoded' CORS'ta "basit istek" sayıldığı
+      // için tarayıcı ön kontrol (preflight) göndermez ve Apps Script'in
+      // yanıtını okuyabiliriz — böylece gerçek bir hata olursa görebiliriz.
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         ad: name,
@@ -92,16 +95,18 @@ rsvpForm.addEventListener('submit', async (e) => {
         tarih: new Date().toLocaleString('tr-TR')
       })
     });
+    const result = await response.json();
+    if (result.result !== 'success') {
+      throw new Error(result.message || 'Sunucu bir hata döndürdü.');
+    }
 
-    // 'no-cors' modunda yanıt gövdesi okunamaz; istek başarıyla gönderildiğinde
-    // burası çalışır ve tabloya satır eklenmiş olur.
     formMessage.textContent = `Teşekkürler ${name}! Katılım durumunuz kaydedildi: ${status}${status === 'Katılacağım' ? ` (${people})` : ''}.`;
     rsvpForm.reset();
     document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
     document.querySelector('.choice input[value="Katılacağım"]').closest('.choice').classList.add('selected');
     document.querySelector('.choice input[value="Katılacağım"]').checked = true;
   } catch (err) {
-    formMessage.textContent = 'Bir sorun oluştu, lütfen tekrar deneyin veya bize doğrudan ulaşın.';
+    formMessage.textContent = 'Bir sorun oluştu: ' + (err.message || 'lütfen tekrar deneyin.');
     formMessage.classList.add('error');
   } finally {
     submitButton.disabled = false;
@@ -181,16 +186,19 @@ photoForm.addEventListener('submit', async (e) => {
   const originalPhotoLabel = photoSubmit.textContent;
 
   let uploaded = 0;
+  let lastError = '';
   for (const file of selectedPhotos) {
     photoSubmit.textContent = `YÜKLENİYOR (${uploaded + 1}/${selectedPhotos.length})...`;
     photoMessage.classList.remove('error');
     photoMessage.textContent = `${uploaded + 1}. fotoğraf yükleniyor...`;
     try {
       const base64Data = await fileToBase64(file);
-      await fetch(RSVP_SCRIPT_URL, {
+      const response = await fetch(RSVP_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors', // Apps Script CORS başlığı döndürmediği için 'no-cors' kullanılır
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // preflight'ı önlemek için text/plain
+        // Not: mode belirtmiyoruz (varsayılan 'cors'). 'text/plain' CORS'ta
+        // "basit istek" sayıldığından tarayıcı ön kontrol göndermez ve
+        // Apps Script'in gerçek yanıtını/hatasını okuyabiliriz.
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify({
           type: 'photo',
           ad: guestName,
@@ -199,9 +207,13 @@ photoForm.addEventListener('submit', async (e) => {
           veri: base64Data
         })
       });
+      const result = await response.json();
+      if (result.result !== 'success') {
+        throw new Error(result.message || 'Sunucu bir hata döndürdü.');
+      }
       uploaded++;
     } catch (err) {
-      // Bir dosya başarısız olsa bile diğerlerini yüklemeye devam et
+      lastError = err.message || String(err);
     }
   }
 
@@ -215,7 +227,7 @@ photoForm.addEventListener('submit', async (e) => {
     photoPreview.innerHTML = '';
     fileDropText.textContent = '📷   Fotoğraf seçmek için dokunun';
   } else {
-    photoMessage.textContent = `${uploaded}/${selectedPhotos.length} fotoğraf yüklendi. Lütfen kalanlar için tekrar deneyin.`;
+    photoMessage.textContent = `${uploaded}/${selectedPhotos.length} fotoğraf yüklendi.` + (lastError ? ` Hata: ${lastError}` : ' Lütfen kalanlar için tekrar deneyin.');
     photoMessage.classList.add('error');
   }
 });

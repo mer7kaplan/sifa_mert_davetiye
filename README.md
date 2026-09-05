@@ -68,11 +68,36 @@ Bundan sonra:
   tablonuzdaki **"Fotoğraflar"** sayfasına yükleyenin adı, tarih ve dosyaya
   doğrudan giden bağlantı eklenir.
 
-**Not:** Form ve fotoğraf yükleme, tarayıcıdan Apps Script'e `no-cors`
-modunda istek gönderir; bu nedenle site tarafında sunucunun yanıtı
-okunamaz, ancak istek başarıyla ulaştığında satır/dosya yine de
-kaydedilir. `RSVP_SCRIPT_URL` doğru girildiği sürece bu güvenilir şekilde
-çalışır.
+**Not:** Form ve fotoğraf yükleme, sunucunun yanıtını okuyup gerçek bir
+hata varsa bunu doğrudan sitedeki mesaj alanında gösterir — yani bir
+şeyler ters giderse "başarılı" gibi görünmez, ekranda hatayı görürsünüz.
+
+### Sorun giderme: "Drive'da klasör oluşmuyor / fotoğraf yüklenmiyor"
+
+Kod güncellemesinden sonra da fotoğraflar Drive'a düşmüyorsa, sırasıyla
+şunları kontrol edin:
+
+1. **Yeni sürüm olarak dağıttınız mı?** Kodu değiştirmek tek başına
+   yetmez — yukarıdaki uyarıdaki gibi **Dağıt → Dağıtımları yönet →
+   düzenle → Yeni sürüm → Dağıt** adımını mutlaka yapın.
+2. **Drive izni gerçekten verildi mi?** Script'e Drive kullanımı sonradan
+   eklendiyse, Google bunu ayrı bir izin olarak görebilir. Apps Script
+   editöründe üstteki fonksiyon açılır menüsünden `doGet` seçip **▶
+   Çalıştır (Run)** butonuna basın. Karşınıza bir izin ekranı gelirse
+   hesabınızı seçin, "Gelişmiş" → "...'e git (güvenli değil)" deyip
+   **hem Sheets hem Drive** için izin verin. Ardından tekrar
+   **Dağıt → Dağıtımları yönet → Yeni sürüm → Dağıt** yapın.
+3. **Gerçek hata mesajına bakın.** Site artık Apps Script'ten dönen
+   gerçek hatayı form altında gösteriyor — fotoğraf yükleme denemesinden
+   sonra çıkan kırmızı mesajı okuyun, sorunun ne olduğunu genelde
+   doğrudan söyler.
+4. **Yürütmeler (Executions) günlüğüne bakın.** Apps Script
+   editöründe sol menüdeki saat simgesine (Yürütmeler) tıklayın; başarısız
+   `doPost` çağrılarını ve tam hata mesajını burada görebilirsiniz.
+5. **Web app erişimi "Herkes (Anyone)" mi?** Dağıtım ayarlarında
+   "Erişimi olanlar" **Herkes** olarak seçili değilse, tarayıcıdan gelen
+   istekler bir Google giriş sayfasına yönlendirilir ve fotoğraf hiç
+   kaydedilmez.
 
 ## Düğünde okutulacak karekod (QR kod) kartı
 
