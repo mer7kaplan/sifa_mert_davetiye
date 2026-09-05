@@ -20,6 +20,7 @@
       <a href="#bilgiler">Bilgiler</a>
       <a href="#hikayemiz">Hikayemiz</a>
       <a href="#katilim">Katılım</a>
+      <a href="#fotograf-paylas">Fotoğraf Paylaş</a>
     </nav>
   </header>
 
@@ -90,6 +91,23 @@
         <button type="submit" class="gold-button">GÖNDER</button>
         <p class="form-note">Katılım durumunuzu 10 Ekim 2026 tarihine kadar bildirmenizi rica ederiz.</p>
         <p id="formMessage" class="form-message"></p>
+      </form>
+    </section>
+
+    <section class="photos section" id="fotograf-paylas">
+      <h2>Anılarımızı Paylaşın</h2>
+      <div class="ornament">— ♡ —</div>
+      <p class="photos-intro">Düğünümüz sırasında çektiğiniz fotoğrafları buradan bizimle paylaşabilirsiniz. Masalardaki karekodu okutarak da doğrudan bu sayfaya ulaşabilirsiniz.</p>
+      <form id="photoForm" class="photo-form">
+        <input name="ad" placeholder="Adınız Soyadınız (opsiyonel)" autocomplete="name" />
+        <label class="file-drop" id="fileDropLabel">
+          <input type="file" id="photoInput" name="fotograflar" accept="image/*" multiple />
+          <span id="fileDropText">📷 &nbsp; Fotoğraf seçmek için dokunun</span>
+        </label>
+        <div class="photo-preview" id="photoPreview"></div>
+        <button type="submit" class="gold-button" id="photoSubmit">FOTOĞRAFLARI YÜKLE</button>
+        <p class="form-note">Her seferinde en fazla 10 fotoğraf, fotoğraf başına 15MB sınırı vardır.</p>
+        <p id="photoMessage" class="form-message"></p>
       </form>
     </section>
   </main>

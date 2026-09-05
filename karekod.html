@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Karekod - Şifa & Mert</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#39342f;--gold:#b68b47;--gold-dark:#8f682f;--cream:#fbf8f1}
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9e2d3;font-family:Montserrat,Arial,sans-serif;color:var(--ink);padding:30px}
+
+  /* ---- Ayar paneli (yalnızca ekranda görünür, yazdırırken gizlenir) ---- */
+  .panel{max-width:640px;margin:0 auto 30px;background:#fff;border-radius:10px;padding:22px 26px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+  .panel h1{font-size:1.1rem;margin:0 0 10px}
+  .panel p{font-size:.85rem;color:#5c554d;margin:0 0 14px}
+  .panel label{font-size:.78rem;display:block;margin-bottom:6px;color:var(--gold-dark);font-weight:600}
+  .panel input{width:100%;padding:11px 13px;border:1px solid #ddd3bf;border-radius:7px;font-size:.9rem;margin-bottom:14px}
+  .panel button{background:linear-gradient(135deg,var(--gold-dark),#c5a261);color:#fff;border:0;padding:12px 22px;border-radius:7px;font:600 .78rem Montserrat,sans-serif;letter-spacing:.08em;cursor:pointer}
+  .panel button:hover{opacity:.92}
+  .panel .hint{font-size:.72rem;color:#8a8175;margin-top:10px}
+
+  /* ---- Kartlar (2x2, kesilip masalara konulabilir) ---- */
+  .sheet{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .card{background:var(--cream);border:1px dashed #c9b98b;padding:34px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:420px}
+  .card .names{font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--ink)}
+  .card .names span{color:var(--gold);font-family:'Cormorant Garamond',serif}
+  .card .ornament{color:var(--gold);letter-spacing:.15em;margin:4px 0 16px;font-size:.85rem}
+  .card h2{font-family:'Cormorant Garamond',serif;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-dark);font-size:1.15rem;margin:0 0 10px}
+  .card p{font-size:.78rem;color:#5c554d;max-width:260px;margin:0 auto 18px;line-height:1.5}
+  .card img{width:190px;height:190px;background:#fff;padding:10px;border-radius:8px;box-shadow:0 8px 20px rgba(57,52,47,.12)}
+  .card small{display:block;margin-top:14px;font-size:.66rem;letter-spacing:.06em;color:#8a8175;word-break:break-all;max-width:260px}
+
+  @media print{
+    body{background:#fff;padding:0}
+    .panel{display:none}
+    .sheet{max-width:100%;gap:0}
+    .card{min-height:48vh;border:1px dashed #999}
+  }
+</style>
+</head>
+<body>
+
+  <div class="panel">
+    <h1>Karekod Kartı Ayarları</h1>
+    <p>Sitenizi GitHub Pages'te yayınladıktan sonra aldığınız adresi aşağıya yapıştırın; karekod otomatik güncellenecek. Ardından bu sayfayı yazdırıp kartları kesip masalara koyabilirsiniz.</p>
+    <label for="siteUrl">Web sitenizin adresi</label>
+    <input id="siteUrl" type="url" placeholder="https://kullaniciadi.github.io/dugun-sitesi/" />
+    <button id="generateBtn">KAREKODU OLUŞTUR</button>
+    <p class="hint">Not: Karekod görseli internet üzerinden bir servis (api.qrserver.com) ile oluşturulur; yazdırmadan önce internet bağlantınızın olması yeterlidir. Buton her tıklandığında aşağıdaki 4 kart da güncellenir.</p>
+  </div>
+
+  <div class="sheet" id="sheet">
+    <!-- 4 özdeş kart; yazdırıp kesin ve masalara yerleştirin -->
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr1" src="" alt="Karekod" /><small id="url1"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr2" src="" alt="Karekod" /><small id="url2"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr3" src="" alt="Karekod" /><small id="url3"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr4" src="" alt="Karekod" /><small id="url4"></small></div>
+  </div>
+
+<script>
+  // Siteniz yayınlandıktan sonra buraya doğrudan da yazabilirsiniz, böylece
+  // sayfa açılır açılmaz karekod otomatik oluşur:
+  var DEFAULT_SITE_URL = '';
+
+  function buildTargetUrl(base){
+    base = base.trim();
+    if(!base) return '';
+    if(!base.endsWith('/')) base += '/';
+    return base + '#fotograf-paylas';
+  }
+
+  function renderQr(base){
+    var target = buildTargetUrl(base);
+    if(!target){ return; }
+    var qrImg = 'https://api.qrserver.com/v1/create-qr-code/?size=380x380&margin=8&data=' + encodeURIComponent(target);
+    for(var i=1;i<=4;i++){
+      document.getElementById('qr'+i).src = qrImg;
+      document.getElementById('url'+i).textContent = target;
+    }
+  }
+
+  document.getElementById('generateBtn').addEventListener('click', function(){
+    renderQr(document.getElementById('siteUrl').value);
+  });
+
+  if(DEFAULT_SITE_URL){
+    document.getElementById('siteUrl').value = DEFAULT_SITE_URL;
+    renderQr(DEFAULT_SITE_URL);
+  }
+</script>
+</body>
+</html>
