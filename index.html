@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#b78d45" />
+  <meta name="description" content="Şifa & Mert - 24 Ekim 2026 düğün davetiyesi" />
+  <title>Şifa & Mert | Düğün Davetiyesi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="nav" id="top">
+    <a class="brand" href="#ana-sayfa">Şifa <span>&</span> Mert</a>
+    <button class="menu-toggle" aria-label="Menüyü aç/kapat">☰</button>
+    <nav>
+      <a href="#ana-sayfa" class="active">Ana Sayfa</a>
+      <a href="#bilgiler">Bilgiler</a>
+      <a href="#hikayemiz">Hikayemiz</a>
+      <a href="#katilim">Katılım</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section" id="ana-sayfa">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">BİRLİKTE BİR ÖMÜR BOYU<br>MUTLULUĞA...</p>
+        <div class="ornament">— ♡ —</div>
+        <h1>Şifa <span>&</span> Mert</h1>
+        <p class="date">24 EKİM 2026 CUMARTESİ</p>
+        <div class="ornament small">— ✦ —</div>
+      </div>
+      <div class="hero-image-wrap reveal">
+        <img src="assets/hero.jpg" alt="Şifa ve Mert" class="hero-image" />
+      </div>
+    </section>
+
+    <section class="details section" id="bilgiler">
+      <h2>Düğünümüze Davetlisiniz</h2>
+      <div class="info-grid">
+        <div class="info-item"><div class="icon">▣</div><strong>24 EKİM 2026</strong><span>CUMARTESİ</span></div>
+        <div class="divider"></div>
+        <div class="info-item"><div class="icon">⌖</div><strong>ROSE WEDDING HALL</strong><span>ANKARA</span></div>
+        <div class="divider"></div>
+        <div class="info-item"><div class="icon">◷</div><strong>19.00</strong><span>NİKAH: 19.30</span></div>
+      </div>
+      <a class="gold-button" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Rose+Wedding+Hall+Ankara">⌖ &nbsp; YOL TARİFİ AL</a>
+    </section>
+
+    <section class="countdown section">
+      <h2>Büyük Günümüze</h2>
+      <div class="ornament">— ♡ —</div>
+      <div class="countdown-grid" aria-live="polite">
+        <div><b id="days">00</b><span>GÜN</span></div>
+        <div><b id="hours">00</b><span>SAAT</span></div>
+        <div><b id="minutes">00</b><span>DAKİKA</span></div>
+        <div><b id="seconds">00</b><span>SANİYE</span></div>
+      </div>
+    </section>
+
+    <section class="story section" id="hikayemiz">
+      <div class="story-copy reveal">
+        <h2>Hikayemiz</h2>
+        <div class="ornament">— ♡ —</div>
+        <p>Bazı hikayeler tesadüflerle başlar, güzel anılarla büyür ve bir ömür boyu devam edecek bir yolculuğa dönüşür.</p>
+        <p>Biz de hikayemizin en güzel gününde, mutluluğumuzu sizlerle paylaşmak için bir araya geliyoruz.</p>
+        <div class="heart-line">♡</div>
+      </div>
+      <div class="gallery reveal">
+        <figure class="photo photo-main"><img src="assets/hero.jpg" alt="Şifa ve Mert kırmızı güllerle" /></figure>
+        <figure class="photo photo-left"><img src="assets/hikaye-1.jpg" alt="Şifa ve Mert'in özel anı" /></figure>
+        <figure class="photo photo-right"><img src="assets/hikaye-2.jpg" alt="Şifa ve Mert'in birlikte fotoğrafı" /></figure>
+      </div>
+    </section>
+
+    <section class="rsvp section" id="katilim">
+      <h2>Düğünümüze Katılabilecek Misiniz?</h2>
+      <div class="ornament">— ♡ —</div>
+      <form id="rsvpForm" class="rsvp-form">
+        <div class="choice-row">
+          <label class="choice selected"><input type="radio" name="durum" value="Katılacağım" checked><span>♡ &nbsp; KATILACAĞIM</span></label>
+          <label class="choice"><input type="radio" name="durum" value="Katılamayacağım"><span>♡ &nbsp; KATILAMAYACAĞIM</span></label>
+        </div>
+        <div class="fields">
+          <input required name="ad" placeholder="Adınız Soyadınız" autocomplete="name" />
+          <select name="kisi" id="personCount"><option value="1">1 kişi</option><option value="2">2 kişi</option><option value="3">3 kişi</option><option value="4">4 kişi</option><option value="5+">5+ kişi</option></select>
+        </div>
+        <button type="submit" class="gold-button">GÖNDER</button>
+        <p class="form-note">Katılım durumunuzu 10 Ekim 2026 tarihine kadar bildirmenizi rica ederiz.</p>
+        <p id="formMessage" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Bu mutlu günümüzde sizleri aramızda görmekten mutluluk duyacağız.</p>
+    <div class="ornament">— ♡ —</div>
+    <div class="footer-names">Şifa <span>&</span> Mert</div>
+    <small>24 EKİM 2026 &nbsp; • &nbsp; ROSE WEDDING HALL &nbsp; • &nbsp; ANKARA</small>
+  </footer>
+
+  <a href="#top" class="to-top" aria-label="Yukarı çık">↑</a>
+  <script src="script.js"></script>
+</body>
+</html>
