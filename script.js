@@ -48,7 +48,7 @@ document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLightbox()
 /* ---------- RSVP formu: yanıtları Google Sheets'e gönder ---------- */
 // Aşağıdaki adrese kendi Google Apps Script "Web App" URL'inizi yapıştırın.
 // Kurulum adımları README.md dosyasındadır.
-const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhyEf_-YhshXW6una4my-R4-F74qU8JGj4Bj3ruoOjqpybQN0bthiRjBHEjLWtouI/exec';
+const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzTg777tUz_lSa_pl4gCWlfqIeN-y_ye6O68ge11dXsyZys4IFLUaKzjI57miJ_-f5c/exec';
 
 const rsvpForm = document.getElementById('rsvpForm');
 const formMessage = document.getElementById('formMessage');
