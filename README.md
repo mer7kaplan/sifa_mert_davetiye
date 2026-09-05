@@ -53,6 +53,13 @@ hem fotoğraf yüklemeyi yönetir. Kurulumu 5-10 dakika sürer.
    fotoğraf yükleme için kullanılır, ayrıca bir ayar gerekmez.)
 7. Değişikliği kaydedip siteyi (GitHub Pages) yeniden yayınlayın.
 
+> **Script kodunu daha sonra güncellerseniz:** Apps Script editöründe kodu
+> değiştirmek tek başına yeterli değildir — mevcut web app adresinin
+> yeni kodu çalıştırması için **Dağıt → Dağıtımları yönet (Manage
+> deployments)** → kalem/düzenle simgesi → "Sürüm (Version)" alanından
+> **Yeni sürüm (New version)** seçip tekrar **Dağıt**'a basmanız gerekir.
+> Aksi halde site eski koda istek göndermeye devam eder.
+
 Bundan sonra:
 - RSVP formu gönderildiğinde ad, katılım durumu, kişi sayısı ve tarih
   otomatik olarak tablonuzdaki **"RSVP"** sayfasına yeni satır olarak eklenir.
