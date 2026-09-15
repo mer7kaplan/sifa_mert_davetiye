@@ -14,4 +14,29 @@ body:before,body:after{content:"";position:fixed;z-index:-1;width:34vw;height:34
 .photo-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px;margin-bottom:18px}.photo-preview img{width:100%;height:84px;object-fit:cover;border-radius:6px;box-shadow:0 6px 14px rgba(57,52,47,.15)}
 .photo-progress{font-size:.72rem;color:var(--gold-dark);letter-spacing:.05em}
 .footer{text-align:center;padding:65px 20px 30px;border-top:1px solid var(--line);background:rgba(255,255,255,.25)}.footer p{max-width:440px;margin:0 auto}.footer-names{font-size:3.5rem;margin:8px 0 20px}.footer small{letter-spacing:.08em;color:var(--gold-dark);font-size:.62rem}.to-top{position:fixed;right:25px;bottom:25px;width:46px;height:46px;display:grid;place-items:center;border-radius:50%;background:var(--gold);color:white;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.18);font-size:1.4rem}.reveal{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* ---------- Giriş kapıları ---------- */
+body.doors-locked{overflow:hidden;height:100vh}
+.door-overlay{position:fixed;inset:0;z-index:300;display:flex;cursor:pointer}
+.door-overlay.hidden{display:none}
+.door{flex:1;position:relative;background:linear-gradient(160deg,#f8f2e4,#e9dcbd 55%,#e2d3ab);box-shadow:inset 0 0 90px rgba(143,104,47,.22);transition:transform 1.15s cubic-bezier(.77,0,.18,1),opacity 1.15s ease}
+.door:before{content:"";position:absolute;inset:18px;border:1px solid rgba(143,104,47,.35);pointer-events:none}
+.door:after{content:"";position:absolute;top:0;bottom:0;width:1px;background:rgba(143,104,47,.35)}
+.door-left{border-right:2px solid var(--gold)}
+.door-left:after{right:0}
+.door-right{border-left:2px solid var(--gold)}
+.door-right:after{left:0}
+.door-handle{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;background:var(--gold-dark);box-shadow:0 0 0 5px rgba(182,139,71,.22);transform:translateY(-50%)}
+.door-left .door-handle{right:22px}
+.door-right .door-handle{left:22px}
+.door-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;text-align:center;color:var(--ink);pointer-events:none;transition:opacity .5s ease}
+.door-center .door-ornament{color:var(--gold);letter-spacing:.15em;margin-bottom:8px;font-size:.9rem}
+.door-names{font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1}
+.door-names span{color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:.6em;margin:0 .1em}
+.door-hint{margin-top:18px;font-size:.68rem;letter-spacing:.18em;color:var(--gold-dark);animation:doorPulse 1.8s ease-in-out infinite}
+@keyframes doorPulse{0%,100%{opacity:.5}50%{opacity:1}}
+.door-overlay.open .door-left{transform:translateX(-100%)}
+.door-overlay.open .door-right{transform:translateX(100%)}
+.door-overlay.open .door-center{opacity:0}
+@media(max-width:640px){.door:before{inset:10px}.door-handle{display:none}}
 @media(max-width:800px){.nav{height:64px}.nav nav{display:none;position:absolute;top:64px;left:0;right:0;background:#fbf8f1;padding:8px 24px 20px;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}.nav nav.open{display:flex}.nav nav a{padding:12px 0}.menu-toggle{display:block}.section{padding:65px 22px}.hero{grid-template-columns:1fr;padding-top:55px;gap:25px}.hero-copy{padding:0}.hero h1{font-size:5.5rem}.hero-image-wrap{height:430px}.info-grid{grid-template-columns:1fr;gap:24px}.divider{display:none}.countdown-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr;gap:20px}.story h2,.story-copy .ornament{text-align:center}.story-copy p{margin-left:auto;margin-right:auto;text-align:center}.heart-line{text-align:center}.gallery{min-height:350px}.photo-main{height:330px;width:52%;left:24%}.photo-left,.photo-right{height:205px;width:34%;top:110px}.choice-row,.fields{grid-template-columns:1fr}.footer-names{font-size:3rem}}

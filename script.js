@@ -1,3 +1,19 @@
+/* ---------- Giriş kapıları: tıklayınca/Enter ile açılır ---------- */
+const doorOverlay = document.getElementById('doorOverlay');
+if (doorOverlay) {
+  document.body.classList.add('doors-locked');
+  const openDoors = () => {
+    if (doorOverlay.classList.contains('open')) return;
+    doorOverlay.classList.add('open');
+    document.body.classList.remove('doors-locked');
+    setTimeout(() => doorOverlay.classList.add('hidden'), 1250);
+  };
+  doorOverlay.addEventListener('click', openDoors);
+  doorOverlay.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openDoors(); }
+  });
+}
+
 const weddingDate = new Date('2026-10-24T19:00:00+03:00');
 function updateCountdown(){
   const diff=Math.max(0,weddingDate-new Date());
