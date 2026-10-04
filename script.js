@@ -37,13 +37,36 @@ document.querySelectorAll('.choice').forEach(choice=>choice.addEventListener('cl
   choice.classList.add('selected');
 }));
 
-/* ---------- Hikayemiz galerisi: fotoğrafa tıklayınca büyüt ---------- */
+/* ---------- Hikayemiz galerisi: fotoğrafa tıklayınca büyüt, ileri/geri gezin ---------- */
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCounter = document.getElementById('lightboxCounter');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
 
-function openLightbox(imgEl){
-  lightboxImg.src = imgEl.src;
-  lightboxImg.alt = imgEl.alt || '';
+// .gallery içindeki ana fotoğraflar + .gallery-extra içine eklenecek her
+// yeni fotoğraf otomatik olarak aynı gezilebilir galeriye dahil olur.
+const galleryImages = Array.from(document.querySelectorAll('.gallery .photo img, .gallery-extra img'));
+let currentPhotoIndex = 0;
+
+function showPhotoAt(index){
+  if (!galleryImages.length) return;
+  currentPhotoIndex = (index + galleryImages.length) % galleryImages.length;
+  const img = galleryImages[currentPhotoIndex];
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt || '';
+  if (lightboxCounter) {
+    lightboxCounter.textContent = galleryImages.length > 1
+      ? `${currentPhotoIndex + 1} / ${galleryImages.length}`
+      : '';
+  }
+  const showNav = galleryImages.length > 1;
+  if (lightboxPrev) lightboxPrev.style.display = showNav ? 'grid' : 'none';
+  if (lightboxNext) lightboxNext.style.display = showNav ? 'grid' : 'none';
+}
+
+function openLightbox(index){
+  showPhotoAt(index);
   lightbox.classList.add('open');
   lightbox.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
@@ -54,16 +77,36 @@ function closeLightbox(){
   document.body.style.overflow = '';
   lightboxImg.src = '';
 }
+function showPrevPhoto(){ showPhotoAt(currentPhotoIndex - 1); }
+function showNextPhoto(){ showPhotoAt(currentPhotoIndex + 1); }
 
-document.querySelectorAll('.gallery .photo img').forEach(img=>{
-  img.addEventListener('click',()=>openLightbox(img));
-  img.addEventListener('keydown',e=>{
-    if(e.key==='Enter' || e.key===' '){ e.preventDefault(); openLightbox(img); }
+galleryImages.forEach((img, index) => {
+  img.addEventListener('click', () => openLightbox(index));
+  img.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(index); }
   });
 });
+
 document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e=>{ if(e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLightbox(); });
+if (lightboxPrev) lightboxPrev.addEventListener('click', e => { e.stopPropagation(); showPrevPhoto(); });
+if (lightboxNext) lightboxNext.addEventListener('click', e => { e.stopPropagation(); showNextPhoto(); });
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showPrevPhoto();
+  if (e.key === 'ArrowRight') showNextPhoto();
+});
+
+// Mobilde parmakla kaydırarak gezinme
+let touchStartX = null;
+lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+lightbox.addEventListener('touchend', e => {
+  if (touchStartX === null) return;
+  const deltaX = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(deltaX) > 40) { deltaX > 0 ? showPrevPhoto() : showNextPhoto(); }
+  touchStartX = null;
+}, { passive: true });
 
 /* ---------- RSVP formu: yanıtları Google Sheets'e gönder ---------- */
 // Aşağıdaki adrese kendi Google Apps Script "Web App" URL'inizi yapıştırın.

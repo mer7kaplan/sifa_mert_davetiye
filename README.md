@@ -188,7 +188,16 @@ ihtiyaç duyulmaz.
   "Yol Tarifi Al" butonu bu konuma göre Google Haritalar'ı açar.
 - "Hikayemiz" bölümündeki fotoğraflara tıklandığında (veya klavyeyle Enter/
   boşluk ile) tam ekran bir büyütme (lightbox) açılır; kapatmak için
-  sağ üstteki ✕ butonuna, dışarıya veya Esc tuşuna basmanız yeterli.
+  sağ üstteki ✕ butonuna, dışarıya veya Esc tuşuna basmanız yeterli. İçeride
+  ‹ › butonları, klavyede sol/sağ ok tuşları veya mobilde parmakla kaydırarak
+  galerideki tüm fotoğraflar arasında gezinebilirsiniz.
+- **Daha fazla fotoğraf eklemek için:** `assets/` klasörüne yeni fotoğrafı
+  koyun, sonra `index.html` (veya `mersin.html`) içinde "Hikayemiz"
+  bölümündeki `<div class="gallery-extra" id="galleryExtra">` satırının
+  hemen altında yorum (`<!-- ... -->`) içinde duran örnek satırı kopyalayıp
+  yorumdan çıkarın, `src` ve `alt` değerlerini güncelleyin. Eklediğiniz her
+  fotoğraf otomatik olarak aynı gezilebilir galeriye (ve sayaç/ileri-geri
+  butonlarına) dahil olur, ayrıca bir JS değişikliği gerekmez.
 - Sitede yeni bir **"Anılarımızı Paylaşın"** bölümü var (`#fotograf-paylas`);
   misafirler burada isim (opsiyonel) girip birden fazla fotoğraf seçip
   yükleyebilir.

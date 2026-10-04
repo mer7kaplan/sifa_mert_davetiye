@@ -86,6 +86,15 @@
         <figure class="photo photo-left"><img src="assets/hikaye-1.jpg" alt="Şifa ve Mert'in özel anı" tabindex="0" role="button" aria-label="Fotoğrafı büyüt" /></figure>
         <figure class="photo photo-right"><img src="assets/hikaye-2.jpg" alt="Şifa ve Mert'in birlikte fotoğrafı" tabindex="0" role="button" aria-label="Fotoğrafı büyüt" /></figure>
       </div>
+      <!-- Daha fazla fotoğraf eklemek için: assets/ klasörüne yeni bir
+           fotoğraf koyup aşağıdaki satırı kopyalayın, dosya adını ve
+           açıklamasını (alt) güncelleyin. İstediğiniz kadar ekleyebilirsiniz,
+           hepsi aynı büyütme galerisinde ileri/geri gezilebilir olur. -->
+      <div class="gallery-extra" id="galleryExtra">
+        <!--
+        <figure><img src="assets/hikaye-3.jpg" alt="Açıklama yazın" tabindex="0" role="button" aria-label="Fotoğrafı büyüt" /></figure>
+        -->
+      </div>
     </section>
 
     <section class="rsvp section" id="katilim">
@@ -135,7 +144,10 @@
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" id="lightboxClose" aria-label="Kapat">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Önceki fotoğraf">‹</button>
     <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Sonraki fotoğraf">›</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
   <script>
