@@ -29,6 +29,14 @@ function updateCountdown(){
 }
 updateCountdown();setInterval(updateCountdown,1000);
 
+const toTopBtn = document.querySelector('.to-top');
+if (toTopBtn) {
+  toTopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 document.querySelector('.menu-toggle').addEventListener('click',()=>document.querySelector('.nav nav').classList.toggle('open'));
 document.querySelectorAll('.nav nav a').forEach(a=>a.addEventListener('click',()=>document.querySelector('.nav nav').classList.remove('open')));
 
