@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Karekod (Ankara) - Şifa & Mert</title>
+<title>Karekod (Mersin) - Şifa & Mert</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{--ink:#39342f;--gold:#b68b47;--gold-dark:#8f682f;--cream:#fbf8f1}
@@ -43,20 +43,20 @@
 <body>
 
   <div class="panel">
-    <h1>Karekod Kartı Ayarları — Ankara Düğünü</h1>
-    <p>Sitenizi GitHub Pages'te yayınladıktan sonra aldığınız adresi aşağıya yapıştırın; karekod otomatik güncellenecek. Ardından bu sayfayı yazdırıp kartları kesip masalara koyabilirsiniz.</p>
-    <label for="siteUrl">Web sitenizin adresi</label>
-    <input id="siteUrl" type="url" placeholder="https://kullaniciadi.github.io/dugun-sitesi/" />
+    <h1>Karekod Kartı Ayarları — Mersin Düğünü</h1>
+    <p>Bu sayfa, misafirleri doğrudan <strong>mersin.html</strong> sayfasındaki fotoğraf yükleme bölümüne götüren karekodu oluşturur. Sitenizin kök adresini aşağıya yazın (örn. https://sifamert.com.tr), karekod otomatik güncellenecek. Ardından bu sayfayı yazdırıp kartları kesip Mersin'deki masalara koyabilirsiniz.</p>
+    <label for="siteUrl">Web sitenizin kök adresi</label>
+    <input id="siteUrl" type="url" placeholder="https://sifamert.com.tr" />
     <button id="generateBtn">KAREKODU OLUŞTUR</button>
     <p class="hint">Not: Karekod görseli internet üzerinden bir servis (api.qrserver.com) ile oluşturulur; yazdırmadan önce internet bağlantınızın olması yeterlidir. Buton her tıklandığında aşağıdaki 4 kart da güncellenir.</p>
   </div>
 
   <div class="sheet" id="sheet">
-    <!-- 4 özdeş kart; yazdırıp kesin ve masalara yerleştirin -->
-    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Ankara Düğünü · 24 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr1" src="" alt="Karekod" /><small id="url1"></small></div>
-    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Ankara Düğünü · 24 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr2" src="" alt="Karekod" /><small id="url2"></small></div>
-    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Ankara Düğünü · 24 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr3" src="" alt="Karekod" /><small id="url3"></small></div>
-    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Ankara Düğünü · 24 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr4" src="" alt="Karekod" /><small id="url4"></small></div>
+    <!-- 4 özdeş kart; yazdırıp kesin ve Mersin'deki masalara yerleştirin -->
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Mersin Düğünü · 10 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr1" src="" alt="Karekod" /><small id="url1"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Mersin Düğünü · 10 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr2" src="" alt="Karekod" /><small id="url2"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Mersin Düğünü · 10 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr3" src="" alt="Karekod" /><small id="url3"></small></div>
+    <div class="card"><div class="names">Şifa <span>&amp;</span> Mert</div><div class="ornament">— ♡ —</div><div class="event-tag">Mersin Düğünü · 10 Ekim 2026</div><h2>Anılarımızı Paylaşın</h2><p>Karekodu okutup çektiğiniz fotoğrafları düğün sitemize yükleyebilirsiniz.</p><img id="qr4" src="" alt="Karekod" /><small id="url4"></small></div>
   </div>
 
 <script>
@@ -67,8 +67,8 @@
   function buildTargetUrl(base){
     base = base.trim();
     if(!base) return '';
-    if(!base.endsWith('/')) base += '/';
-    return base + '#fotograf-paylas';
+    if(base.endsWith('/')) base = base.slice(0, -1);
+    return base + '/mersin.html#fotograf-paylas';
   }
 
   function renderQr(base){

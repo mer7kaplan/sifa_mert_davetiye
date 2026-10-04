@@ -14,7 +14,11 @@ if (doorOverlay) {
   });
 }
 
-const weddingDate = new Date('2026-10-24T19:00:00+03:00');
+// Her sayfa (index.html / mersin.html) script.js'den önce kendi
+// window.WEDDING_DATE_ISO ve window.SITE_EVENT değerlerini tanımlar.
+// Tanımlanmamışsa Ankara düğününün tarihine geri döner.
+const weddingDate = new Date(window.WEDDING_DATE_ISO || '2026-10-24T19:00:00+03:00');
+const SITE_EVENT = window.SITE_EVENT || '';
 function updateCountdown(){
   const diff=Math.max(0,weddingDate-new Date());
   const d=Math.floor(diff/86400000);
@@ -108,7 +112,8 @@ rsvpForm.addEventListener('submit', async (e) => {
         ad: name,
         durum: status,
         kisi: status === 'Katılacağım' ? people : '-',
-        tarih: new Date().toLocaleString('tr-TR')
+        tarih: new Date().toLocaleString('tr-TR'),
+        etkinlik: SITE_EVENT
       })
     });
     const result = await response.json();
@@ -220,7 +225,8 @@ photoForm.addEventListener('submit', async (e) => {
           ad: guestName,
           dosyaAdi: file.name,
           mimeTuru: file.type || 'image/jpeg',
-          veri: base64Data
+          veri: base64Data,
+          etkinlik: SITE_EVENT
         })
       });
       const result = await response.json();
