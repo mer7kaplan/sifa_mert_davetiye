@@ -3,11 +3,35 @@
 GitHub Pages üzerinde yayınlanmaya hazır statik düğün davetiyesi sitesi.
 
 ## Yayınlama
-1. Bu klasördeki dosyaları bir GitHub reposuna yükleyin.
+1. Bu klasördeki dosyaları bir GitHub reposuna yükleyin (bu klasörde artık
+   bir **`CNAME`** dosyası da var — onu da diğerleriyle birlikte, kök dizine
+   yüklemeyi unutmayın).
 2. GitHub'da **Settings → Pages** bölümüne girin.
 3. **Deploy from a branch** seçin.
 4. Branch olarak `main`, klasör olarak `/ (root)` seçin.
 5. Kaydedin. GitHub birkaç dakika içinde size web adresini oluşturacaktır.
+
+## Özel alan adı: sifamert.com.tr
+
+Site artık `sifamert.com.tr` adresine bağlanacak şekilde hazırlandı (`CNAME`
+dosyası ve `karekod.html` içindeki varsayılan adres bu alan adını içeriyor).
+Adresin gerçekten çalışması için alan adını aldığınız firmanın (Turhost,
+Natro, İsimtescil, GoDaddy vb.) **DNS yönetim paneline** şu kayıtları
+eklemeniz gerekiyor:
+
+| Tür | Host/Ad | Değer |
+|---|---|---|
+| A | @ (veya boş) | 185.199.108.153 |
+| A | @ (veya boş) | 185.199.109.153 |
+| A | @ (veya boş) | 185.199.110.153 |
+| A | @ (veya boş) | 185.199.111.153 |
+| CNAME | www | kullaniciadi.github.io *(kendi GitHub kullanıcı adınızla)* |
+
+Sonra GitHub'da **Settings → Pages → Custom domain** kutusuna
+`sifamert.com.tr` yazıp kaydedin ve DNS yayıldıktan sonra (birkaç dakika –
+birkaç saat) **Enforce HTTPS** kutusunu işaretleyin. Bazı .com.tr
+sağlayıcılarında panel "A kaydı" yerine "Host Records" / "DNS Yönetimi"
+gibi adlandırılabilir; kayıt tipi ve mantığı aynıdır.
 
 ## Düzenlenebilir bilgiler
 - `index.html`: salon, tarih, metin ve davet bilgileri
@@ -105,17 +129,15 @@ Kod güncellemesinden sonra da fotoğraflar Drive'a düşmüyorsa, sırasıyla
 fotoğraf yükleme sayfanıza gidebilecekleri, kesilip masalara konulabilen
 4'lü bir kart sayfası oluşturur.
 
-1. Siteniz GitHub Pages'te yayınlandıktan sonra adresini kopyalayın
-   (ör. `https://kullaniciadi.github.io/dugun-sitesi/`).
-2. `karekod.html` dosyasını tarayıcıda açın, üstteki kutuya bu adresi
-   yapıştırıp **KAREKODU OLUŞTUR**'a tıklayın — 4 kartın karekodu da
-   otomatik güncellenir. (İsterseniz dosyanın içindeki
-   `DEFAULT_SITE_URL` değişkenine adresi yazıp kaydederseniz, sayfa her
-   açıldığında karekod otomatik oluşur.)
-3. Tarayıcınızın **Yazdır (Ctrl/Cmd+P)** özelliğini kullanın; ayar
+1. `karekod.html` dosyasını tarayıcıda açın; adres olarak
+   `https://sifamert.com.tr` önceden tanımlı olduğu için karekod sayfa
+   açılır açılmaz otomatik oluşur, ekstra bir şey yapmanıza gerek yok.
+   (Adresi değiştirmeniz gerekirse üstteki kutuya yazıp **KAREKODU
+   OLUŞTUR**'a tıklamanız yeterli.)
+2. Tarayıcınızın **Yazdır (Ctrl/Cmd+P)** özelliğini kullanın; ayar
    paneli yazdırırken otomatik gizlenir, sadece 4 kart basılır.
    İstediğiniz sayıda masa için sayfayı birden fazla kez yazdırabilirsiniz.
-4. Çıktıyı kesip masalara, fotoğraf köşesine veya davetiye standına
+3. Çıktıyı kesip masalara, fotoğraf köşesine veya davetiye standına
    yerleştirebilirsiniz.
 
 Karekod görseli internet üzerinden ücretsiz bir servisle (api.qrserver.com)
