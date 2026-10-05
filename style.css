@@ -49,3 +49,17 @@ body.doors-locked{overflow:hidden;height:100vh}
 .door-overlay.open .door-center{opacity:0}
 @media(max-width:640px){.door:before{inset:10px}.door-handle{display:none}}
 @media(max-width:800px){.nav{height:64px}.nav nav{display:none;position:absolute;top:64px;left:0;right:0;background:#fbf8f1;padding:8px 24px 20px;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}.nav nav.open{display:flex}.nav nav a{padding:12px 0}.menu-toggle{display:block}.section{padding:65px 22px}.hero{grid-template-columns:1fr;padding-top:55px;gap:25px}.hero-copy{padding:0}.hero h1{font-size:5.5rem}.hero-image-wrap{height:430px}.info-grid{grid-template-columns:1fr;gap:24px}.divider{display:none}.countdown-grid{grid-template-columns:repeat(2,1fr)}.story{grid-template-columns:1fr;gap:20px}.story h2,.story-copy .ornament{text-align:center}.story-copy p{margin-left:auto;margin-right:auto;text-align:center}.heart-line{text-align:center}.gallery{min-height:350px}.photo-main{height:330px;width:52%;left:24%}.photo-left,.photo-right{height:205px;width:34%;top:110px}.choice-row,.fields{grid-template-columns:1fr}.footer-names{font-size:3rem}}
+
+/* ---------- Bölüme gitme: yapışkan menünün başlığı örtmesini engelle ---------- */
+html{scroll-padding-top:84px}
+
+/* ---------- Mobil "Hikayemiz": üst üste binen kolaj yerine düzgün ızgara ---------- */
+@media(max-width:800px){
+  html{scroll-padding-top:72px}
+  .story{overflow-x:clip;max-width:100%}
+  .gallery{min-height:0;width:100%;max-width:420px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .photo,.photo-main,.photo-left,.photo-right{position:static;width:auto;height:auto;left:auto;right:auto;top:auto;transform:none;z-index:auto}
+  .photo-main{grid-column:1 / -1}
+  .photo-main img{height:auto;aspect-ratio:4/5}
+  .photo-left img,.photo-right img{height:auto;aspect-ratio:3/4}
+}

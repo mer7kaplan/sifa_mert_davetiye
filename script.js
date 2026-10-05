@@ -1,11 +1,20 @@
 /* ---------- Giriş kapıları: tıklayınca/Enter ile açılır ---------- */
 const doorOverlay = document.getElementById('doorOverlay');
 if (doorOverlay) {
+  // Karekoddan gelen bağlantı (ör. ...#fotograf-paylas): kapılar kilitliyken
+  // sayfa kaydırılamadığı için tarayıcı bölüme gidemiyor. Hedefi hatırla,
+  // kapılar açılırken o bölüme kaydır.
+  const deepLinkHash = location.hash;
   document.body.classList.add('doors-locked');
   const openDoors = () => {
     if (doorOverlay.classList.contains('open')) return;
     doorOverlay.classList.add('open');
     document.body.classList.remove('doors-locked');
+    if (deepLinkHash && deepLinkHash.length > 1) {
+      let target = null;
+      try { target = document.querySelector(deepLinkHash); } catch (e) {}
+      if (target) target.scrollIntoView({ behavior: 'instant', block: 'start' });
+    }
     setTimeout(() => doorOverlay.classList.add('hidden'), 1250);
   };
   doorOverlay.addEventListener('click', openDoors);
